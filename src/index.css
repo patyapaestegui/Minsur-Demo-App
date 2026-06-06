@@ -122,3 +122,82 @@ code {
     transform: scale(1);
   }
 }
+
+body {
+  margin: 0;
+  background: #020617;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.iconButton {
+  background: #111827;
+  color: white;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.logoCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #111827;
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #f59e0b;
+}
+
+.kpiRow {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+.kpiCard {
+  width: 130px;
+  height: 52px;
+  border-radius: 10px;
+  padding: 8px 14px;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border: 1px solid #1e293b;
+}
+
+.kpiCard span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.kpiCard strong {
+  font-size: 22px;
+}
+
+.kpiCard small {
+  grid-column: 2;
+  color: #cbd5e1;
+}
+
+.kpiCard.online {
+  background: #052e16;
+  color: #22c55e;
+}
+
+.kpiCard.alarm {
+  background: #450a0a;
+  color: #f87171;
+}
+
+.kpiCard.warning {
+  background: #422006;
+  color: #facc15;
+}
+
+.kpiCard.offline {
+  background: #111827;
+  color: #e5e7eb;
+}
