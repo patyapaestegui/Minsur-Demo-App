@@ -1,6 +1,6 @@
 import { FaVideo } from "react-icons/fa";
 import type { Camera } from "../types/Camera";
-
+import { useState } from "react";
 
 interface Props {
   camera: Camera;
@@ -28,10 +28,12 @@ export default function CameraMarker({
     }
   };
 
+  const [hover,setHover] =
+  useState(false);
+
   return (
     <div
-    title={camera.name}
-      onClick={() => onClick(camera)}
+    
       style={{
         position: "absolute",
         left: `${camera.x}%`,
@@ -40,7 +42,45 @@ export default function CameraMarker({
         cursor: "pointer",
         zIndex: 10
       }}
+      onClick={() => onClick(camera)}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
+
+      {
+ hover && (
+
+<div
+style={{
+position:"absolute",
+left:"45px",
+top:"-20px",
+background:"#111",
+padding:"8px",
+borderRadius:"8px",
+zIndex:1000
+}}
+>
+
+<img
+src={camera.preview}
+width={180}
+/>
+
+<div
+style={{
+color:"white",
+fontSize:"12px"
+}}
+>
+{camera.name}
+</div>
+
+</div>
+
+)}
+
+
       <div
         style={{
           width: "34px",
@@ -60,22 +100,7 @@ camera.status==="alarm"
       >
         <FaVideo color="white" />
       </div>
-      <div
-style={{
-position:"absolute",
-top:"-40px",
-left:"50%",
-transform:"translateX(-50%)",
-background:"#111",
-color:"white",
-padding:"4px 8px",
-borderRadius:"4px",
-fontSize:"12px",
-whiteSpace:"nowrap"
-}}
->
-{camera.name}
-</div>
+
     </div>
   );
 }

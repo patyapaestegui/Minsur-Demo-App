@@ -25,14 +25,18 @@ export default function CameraDetail({
         Estado: {camera.status}
       </p>
 
-      <img
-        src={camera.preview}
-        alt={camera.name}
-        style={{
-          width: "100%",
-          borderRadius: "8px"
-        }}
-      />
+      <video // Esto simula el streaming de video, se cambiará mas adelante por la conexion RTSP al WAVE
+        autoPlay
+        muted
+        loop
+        controls
+        width="100%"
+        >
+          <source
+            src="https://www.w3schools.com/html/mov_bbb.mp4"
+            type="video/mp4"
+          />
+      </video>
 
     </div>
   );
