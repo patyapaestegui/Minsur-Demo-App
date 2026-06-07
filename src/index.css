@@ -51,19 +51,20 @@
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  font-family: "Inter", sans-serif;
 }
 
 h1,
@@ -125,14 +126,14 @@ code {
 
 body {
   margin: 0;
-  background: #020617;
+  background: #05070d;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .iconButton {
   background: #111827;
   color: white;
-  border: 1px solid #1e293b;
+  border: 1px solid rgba(255,255,255,0.05);
   border-radius: 8px;
   padding: 10px;
   cursor: pointer;
@@ -152,52 +153,856 @@ body {
 
 .kpiRow {
   display: flex;
-  gap: 18px;
+  gap: 16px;
   justify-content: center;
+  align-items: center;
 }
 
 .kpiCard {
-  width: 130px;
-  height: 52px;
-  border-radius: 10px;
-  padding: 8px 14px;
-  color: white;
+  width: 165px;
+  height: 56px;
+
+  padding: 10px 14px;
+
+  border-radius: 12px;
+
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: center;
-  border: 1px solid #1e293b;
+  grid-template-rows: auto auto;
+
+  border: 1px solid rgba(255,255,255,.05);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.03),
+    0 4px 12px rgba(0,0,0,.30);
+
+  transition: all .2s ease;
 }
 
 .kpiCard span {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .kpiCard strong {
-  font-size: 22px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
 }
 
 .kpiCard small {
   grid-column: 2;
-  color: #cbd5e1;
+  grid-row: 2;
+
+  color: #aeb6c5;
+
+  font-size: 12px;
+
+  text-align: right;
 }
 
 .kpiCard.online {
-  background: #052e16;
-  color: #22c55e;
+    background: #0a3a1c !important;
+
+  color: #31d05f;
+  border-color: rgba(49,208,95,.12);
 }
 
 .kpiCard.alarm {
-  background: #450a0a;
-  color: #f87171;
+    background: #4a0a0a !important;
+
+  color: #ff6666;
+  border-color: rgba(255,102,102,.12);
 }
 
 .kpiCard.warning {
-  background: #422006;
-  color: #facc15;
+  background: #5b4108 !important;
+  color: #ffc83d;
+  border-color: rgba(255,200,61,.12);
 }
 
 .kpiCard.offline {
+  background: #20293a !important;
+
+  color: #dce1ea;
+  border-color: rgba(255,255,255,.06);
+}
+:root {
+  background: #050816;
+}
+
+body {
+  background: #050816;
+  font-family: "Inter", sans-serif;
+}
+
+.iconButton,
+.iconButtonSmall,
+.mapButton,
+.searchBox,
+.panelSection,
+.cameraInfoGrid div {
+  background: #05070d !important;
+  border-color: #1a2233 !important;
+  font-size: 13px;
+}
+
+.sidePanel,
+.mapPanel,
+.rightPanel {
+  background: #05070d !important;
+  border-color: #151c2d !important;
+  font-size: 13px;
+}
+
+.panelHeader,
+.mapHeader,
+.bottomStatusBar {
+  background: #05070d !important;
+  border-color: #151c2d !important;
+  font-size: 13px;
+}
+
+.kpiCard {
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  box-shadow: none !important;
+}
+
+.kpiCard.online {
+  background: #042713 !important;
+  color: #33c766 !important;
+  border-color: rgba(51,199,102,0.10) !important;
+}
+
+.kpiCard.alarm {
+  background: #340606 !important;
+  color: #f06464 !important;
+  border-color: rgba(240,100,100,0.10) !important;
+}
+
+.kpiCard.warning {
+  background: #3f2a04 !important;
+  color: #eab308 !important;
+  border-color: rgba(234,179,8,0.10) !important;
+}
+
+.kpiCard.offline {
+  background: #121926 !important;
+  color: #d1d5db !important;
+  border-color: rgba(209,213,219,0.06) !important;
+}
+
+.cameraRow.selected {
+  background: #142554 !important;
+}
+
+.cameraRow.alarmRow {
+  background: #3a0808 !important;
+}
+
+button {
+  background: #0a0f1d !important;
+  border-color: #1a2233 !important;
+  border: 1px solid rgba(255,255,255,0.05);
+  
+}
+
+button:hover {
+  background: #111827 !important;
+}
+
+
+
+
+
+.sidePanel {
+  background: #05070d;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}
+
+.panelHeader {
+  height: 48px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.searchRow {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+}
+
+.searchBox {
+  flex: 1;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  background: #030712;
+  font-size: 13px;
+}
+
+.iconButtonSmall {
+  width: 38px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+  background: #030712;
+  color: white;
+}
+
+.cameraRow {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  font-size: 13px;
+}
+.cameraRow small {
+  font-size: 11px;
+}
+
+.cameraRow:hover {
+  background: #0f172a;
+  background: #101827 !important;
+}
+
+.cameraRow.selected {
+  background: #172554;
+}
+
+.cameraRow.alarmRow {
+  background: rgba(127, 29, 29, 0.45);
+  color: #fca5a5;
+}
+
+.cameraNumber {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #030712;
+  border: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  padding: 14px;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 13px;
+  border-radius: 8px;
+}
+.mapPanel {
+  background: #05070d;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mapHeader {
+  height: 46px;
+  padding: 0 14px;
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mapButton {
+  background: #0f172a;
+  color: white;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.mapBody {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mapCanvas {
+  position: relative;
+  display: inline-block;
+}
+
+.mapImage {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 140px);
+  object-fit: contain;
+}
+.rightPanel {
+  background: #05070d;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.panelSection {
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #030712;
+}
+
+.panelSection h3 {
+  margin-top: 0;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #f8fafc;
+}
+
+.alarmCard {
+  display: flex;
+  gap: 10px;
   background: #111827;
-  color: #e5e7eb;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.alarmCard img {
+  width: 80px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.alarmCard strong {
+  color: #f87171;
+  display: block;
+  font-size: 14px;
+}
+
+.alarmCard small {
+  color: #cbd5e1;
+  display: block;
+  font-size: 12px;
+}
+
+.alarmCard span {
+  color: #f87171;
+  font-size: 12px;
+}
+
+.eventRow {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: #cbd5e1;
+  font-size: 12px;
+}
+.bottomStatusBar {
+  height: 32px;
+  background: #05070d;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 14px;
+  font-size: 12px;
+}
+
+.bottomStatusBar span:first-child {
+  color: #22c55e;
+}
+.cameraDetailCard {
+  background: #05070d;
+  color: white;
+}
+
+.cameraDetailHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.cameraDetailHeader h2 {
+  font-size: 18px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.cameraDetailHeader span {
+  color: #22c55e;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.videoFrame {
+  background: black;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.cameraInfoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cameraInfoGrid div {
+  background: #111827;
+  border: 1px solid ;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.cameraInfoGrid small {
+  color: #94a3b8;
+  display: block;
+}
+
+.cameraInfoGrid strong {
+  color: white;
+  font-size: 12px;
+}
+
+.cameraDetailEmpty {
+  color: #94a3b8;
+  text-align: center;
+  padding: 30px;
+}
+.markerLabel {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(2, 6, 23, 0.9);
+  color: white;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 3px 7px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+button {
+  background: #0f172a;
+  color: white;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+button:hover {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+.kpiCard {
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+}
+
+.kpiCard.online {
+  border-color: #22c55e;
+}
+
+.kpiCard.alarm {
+  border-color: #ef4444;
+}
+
+.kpiCard.warning {
+  border-color: #facc15;
+}
+
+.kpiCard.offline {
+  border-color: #64748b;
+}
+.mapOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+.quickViews {
+  margin-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.quickViewsHeader {
+  padding: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.quickViewsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 0 10px 10px 10px;
+}
+
+.quickCard {
+  background: #070b18;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.quickCard img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.quickCardFooter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  color: white;
+  font-size: 12px;
+}
+
+.quickStatus {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.quickStatus.online {
+  background: #22c55e;
+}
+
+.quickStatus.alarm {
+  background: #ef4444;
+}
+
+.quickStatus.warning {
+  background: #eab308;
+}
+
+.quickStatus.offline {
+  background: #64748b;
+}
+.mapPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.mapBody {
+  flex: 1;
+}
+
+/* AJUSTE FINAL ESTILO PROTOTIPO */
+
+body {
+  background: #03060b !important;
+  font-family: "Inter", Arial, sans-serif !important;
+}
+
+/* Fondos de paneles */
+.sidePanel,
+.mapPanel,
+.rightPanel {
+  background: #050910 !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* Headers */
+.panelHeader,
+.mapHeader {
+  background: #070b13 !important;
+  color: #f8fafc !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+/* Panel izquierdo */
+.cameraRow {
+   background: #0a111c !important;
+  border-left: 2px solid transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  height: 54px !important;
+}
+
+.cameraRow.selected {
+  background: #101d3d !important;
+}
+
+.cameraRow.alarmRow {
+  background: #281010 !important;
+}
+
+.cameraRow div {
+  font-size: 13px !important;
+}
+
+.cameraRow small {
+  font-size: 11px !important;
+}
+
+/* Vistas rápidas */
+.quickViews {
+  background: #0a111c;
+  margin: 8px;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+.quickViewsHeader {
+  background: #050910 !important;
+  color: #f8fafc !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+.quickCard {
+  background: #101827 !important;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.quickCardFooter {
+  background: #080d16 !important;
+  color: #f8fafc !important;
+  font-size: 12px !important;
+}
+
+/* Panel derecho */
+.panelSection {
+  background: #070b13 !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+.panelSection h3 {
+  color: #f8fafc !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+.alarmCard {
+  background: #0b111c !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+.alarmCard strong {
+  color: #f87171 !important;
+  font-size: 14px !important;
+}
+
+.alarmCard small {
+  color: #cbd5e1 !important;
+  font-size: 12px !important;
+}
+
+.alarmCard span {
+  color: #f87171 !important;
+  font-size: 11px !important;
+}
+
+/* Eventos recientes */
+.eventRow {
+  background: #080d16 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  color: #cbd5e1 !important;
+  font-size: 12px !important;
+}
+
+/* KPI superior */
+.kpiCard span {
+  color: #f1f5f9 !important;
+  opacity: 1 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+.kpiCard small {
+  color: #cbd5e1 !important;
+}
+
+.kpiCard strong {
+  color: inherit !important;
+}
+
+/* Separadores superiores */
+.topDivider {
+  width: 1px;
+  height: 42px;
+  background: rgba(255,255,255,0.08);
+}
+.cameraDetailCard h2 {
+  font-size: 14px !important;
+  margin: 0 0 4px 0 !important;
+  color: #f8fafc !important;
+}
+
+.cameraStatusText {
+  color: #22c55e;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.videoFrame img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+
+.cameraSelectedFooter {
+  margin-top: 10px;
+  background: #07111a;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.selectedCameraName {
+  color: #f8fafc;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.greenDot {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.streamControls {
+  display: grid;
+  grid-template-columns: 1fr 36px 36px;
+  gap: 8px;
+}
+
+.streamControls select {
+  background: #050910;
+  color: #cbd5e1;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.streamControls button {
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eventCard {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  background: #07111a;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 8px;
+}
+
+.eventIcon {
+  color: #ef4444;
+  font-size: 15px;
+}
+
+.eventTime {
+  color: #cbd5e1;
+  font-size: 12px;
+}
+
+.eventText {
+  color: #f8fafc;
+  font-size: 12px;
+}
+
+.eventCamera {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.mapCanvas {
+  position: relative;
+}
+
+.mapDarkOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mapCanvas .markerLabel,
+.mapCanvas > div[style*="absolute"] {
+  z-index: 10;
+}
+
+.mapFloatingTools {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 8px;
+  z-index: 50;
+}
+
+.mapFloatingTools button {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(7, 11, 19, 0.95) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  color: white;
+  font-size: 20px;
 }

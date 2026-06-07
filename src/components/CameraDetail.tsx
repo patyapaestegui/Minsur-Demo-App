@@ -1,43 +1,67 @@
-import type { Camera } from "../types/Camera";
+import { Camera, Maximize2 } from "lucide-react";
+import type { Camera as CameraType } from "../types/Camera";
 
 interface Props {
-  camera?: Camera;
+  camera?: CameraType;
 }
 
-export default function CameraDetail({
-  camera
-}: Props) {
-
+export default function CameraDetail({ camera }: Props) {
   if (!camera) {
     return (
-      <div style={{ padding: 20 }}>
+      <div className="cameraDetailEmpty">
         Seleccione una cámara
       </div>
     );
   }
 
   return (
-    <div style={{ padding: 20 }}>
-
+    <div className="cameraDetailCard">
       <h2>{camera.name}</h2>
+      <span className="cameraStatusText">
+        {camera.status.toUpperCase()}
+      </span>
 
-      <p>
-        Estado: {camera.status}
-      </p>
-
-      <video // Esto simula el streaming de video, se cambiará mas adelante por la conexion RTSP al WAVE
-        autoPlay
-        muted
-        loop
-        controls
-        width="100%"
+      <div className="videoFrame">
+        <video
+          autoPlay
+          muted
+          loop
+          controls
+          style={{
+            width: "100%",
+            height: "170px",
+            objectFit: "cover",
+            display: "block"
+          }}
         >
           <source
             src="https://www.w3schools.com/html/mov_bbb.mp4"
             type="video/mp4"
           />
-      </video>
+        </video>
+      </div>
 
+      <div className="cameraSelectedFooter">
+        <div className="selectedCameraName">
+          <span className="greenDot" />
+          {camera.name}
+        </div>
+
+        <div className="streamControls">
+          <select>
+            <option>Stream principal (WebRTC)</option>
+            <option>Stream secundario</option>
+          </select>
+
+          <button>
+            <Maximize2 size={16} />
+          </button>
+
+          <button>
+            <Camera size={16} />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

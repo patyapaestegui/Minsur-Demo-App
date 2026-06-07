@@ -22,10 +22,10 @@ export default function TopBar({
     <div
       style={{
         height: 72,
-        background: "#020617",
+        background: "#05070d",
         color: "white",
         display: "grid",
-        gridTemplateColumns: "330px 1fr 320px",
+        gridTemplateColumns: "360px 1fr 300px",
         alignItems: "center",
         borderBottom: "1px solid #1e293b",
         padding: "0 16px"
@@ -44,8 +44,9 @@ export default function TopBar({
           <div style={{ fontSize: 20, fontWeight: 700 }}>
             PLANTA PISCO
           </div>
+
           <div style={{ color: "#94a3b8", fontSize: 13 }}>
-            Sistema de Monitoreo
+            Centro de Monitoreo VMS
           </div>
         </div>
       </div>
@@ -76,7 +77,7 @@ export default function TopBar({
         </div>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "flex-end", gap: 24 }}>
+      <div style={{ display: "flex", justifyContent: "flex-end", gap: 20 }}>
         <div style={{ textAlign: "right" }}>
           <div>10:24:35</div>
           <small style={{ color: "#94a3b8" }}>23/05/2026</small>
