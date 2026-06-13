@@ -1,142 +1,43 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
 * {
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #03060b;
+  font-family: "Inter", Arial, sans-serif;
+  color: #f8fafc;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.3);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-body {
-  margin: 0;
-  background: #05070d;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.iconButton {
-  background: #111827;
+button {
+  background: #0a0f1d;
   color: white;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 8px;
-  padding: 10px;
+  padding: 8px 10px;
   cursor: pointer;
+  font-size: 13px;
+}
+
+button:hover {
+  background: #111827;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.iconButton,
+.iconButtonSmall,
+.mapButton {
+  background: #0a0f1d;
+  border: 1px solid #1a2233;
+  color: white;
 }
 
 .logoCircle {
@@ -161,32 +62,22 @@ body {
 .kpiCard {
   width: 165px;
   height: 56px;
-
   padding: 10px 14px;
-
   border-radius: 12px;
-
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto;
-
-  border: 1px solid rgba(255,255,255,.05);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.03),
-    0 4px 12px rgba(0,0,0,.30);
-
-  transition: all .2s ease;
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
 .kpiCard span {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
 }
 
 .kpiCard strong {
   font-size: 28px;
-  font-weight: 700;
   line-height: 1;
   text-align: right;
 }
@@ -194,134 +85,57 @@ body {
 .kpiCard small {
   grid-column: 2;
   grid-row: 2;
-
-  color: #aeb6c5;
-
+  color: #cbd5e1;
   font-size: 12px;
-
   text-align: right;
 }
 
 .kpiCard.online {
-    background: #0a3a1c !important;
-
-  color: #31d05f;
-  border-color: rgba(49,208,95,.12);
+  background: #042713;
+  color: #33c766;
 }
 
 .kpiCard.alarm {
-    background: #4a0a0a !important;
-
-  color: #ff6666;
-  border-color: rgba(255,102,102,.12);
+  background: #340606;
+  color: #f06464;
 }
 
 .kpiCard.warning {
-  background: #5b4108 !important;
-  color: #ffc83d;
-  border-color: rgba(255,200,61,.12);
+  background: #3f2a04;
+  color: #eab308;
 }
 
 .kpiCard.offline {
-  background: #20293a !important;
-
-  color: #dce1ea;
-  border-color: rgba(255,255,255,.06);
+  background: #121926;
+  color: #d1d5db;
 }
-:root {
-  background: #050816;
-}
-
-body {
-  background: #050816;
-  font-family: "Inter", sans-serif;
-}
-
-.iconButton,
-.iconButtonSmall,
-.mapButton,
-.searchBox,
-.panelSection,
-.cameraInfoGrid div {
-  background: #05070d !important;
-  border-color: #1a2233 !important;
-  font-size: 13px;
-}
+/* ===========================
+   PANELES BASE
+=========================== */
 
 .sidePanel,
 .mapPanel,
 .rightPanel {
-  background: #05070d !important;
-  border-color: #151c2d !important;
-  font-size: 13px;
+  background: #050910;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .panelHeader,
 .mapHeader,
 .bottomStatusBar {
-  background: #05070d !important;
-  border-color: #151c2d !important;
-  font-size: 13px;
+  background: #070b13;
+  color: #f8fafc;
 }
 
-.kpiCard {
-  border: 1px solid rgba(255,255,255,0.04) !important;
-  box-shadow: none !important;
-}
-
-.kpiCard.online {
-  background: #042713 !important;
-  color: #33c766 !important;
-  border-color: rgba(51,199,102,0.10) !important;
-}
-
-.kpiCard.alarm {
-  background: #340606 !important;
-  color: #f06464 !important;
-  border-color: rgba(240,100,100,0.10) !important;
-}
-
-.kpiCard.warning {
-  background: #3f2a04 !important;
-  color: #eab308 !important;
-  border-color: rgba(234,179,8,0.10) !important;
-}
-
-.kpiCard.offline {
-  background: #121926 !important;
-  color: #d1d5db !important;
-  border-color: rgba(209,213,219,0.06) !important;
-}
-
-.cameraRow.selected {
-  background: #142554 !important;
-}
-
-.cameraRow.alarmRow {
-  background: #3a0808 !important;
-}
-
-button {
-  background: #0a0f1d !important;
-  border-color: #1a2233 !important;
-  border: 1px solid rgba(255,255,255,0.05);
-  
-}
-
-button:hover {
-  background: #111827 !important;
-}
-
-
-
-
+/* ===========================
+   SIDEBAR
+=========================== */
 
 .sidePanel {
-  background: #05070d;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 8px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 6px;
@@ -334,7 +148,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   font-weight: 700;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .searchRow {
@@ -346,66 +160,81 @@ button:hover {
 .searchBox {
   flex: 1;
   height: 38px;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 8px;
-  color: #94a3b8;
   display: flex;
   align-items: center;
   gap: 8px;
+
   padding: 0 10px;
+
   background: #030712;
+  color: #94a3b8;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+
   font-size: 13px;
 }
 
 .iconButtonSmall {
   width: 38px;
+  height: 38px;
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.05);
-  background: #030712;
-  color: white;
 }
 
 .cameraRow {
-  height: 50px;
   display: flex;
   align-items: center;
   gap: 10px;
+
+  height: 54px;
   padding: 0 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+
+  background: #0a111c;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
   cursor: pointer;
-  font-size: 13px;
-}
-.cameraRow small {
-  font-size: 11px;
+
+  transition: background 0.15s;
 }
 
 .cameraRow:hover {
-  background: #0f172a;
-  background: #101827 !important;
+  background: #101827;
 }
 
 .cameraRow.selected {
-  background: #172554;
+  background: #101d3d;
 }
 
 .cameraRow.alarmRow {
-  background: rgba(127, 29, 29, 0.45);
+  background: #281010;
   color: #fca5a5;
+}
+
+.cameraRow small {
+  font-size: 11px;
+  color: #94a3b8;
 }
 
 .cameraNumber {
   width: 20px;
   height: 20px;
-  border-radius: 50%;
-  background: #030712;
-  border: 1px solid rgba(255,255,255,0.05);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border-radius: 50%;
+
+  background: #030712;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
   font-size: 11px;
 }
 
-.statusDot {
+.statusDot,
+.quickStatus,
+.greenDot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -413,306 +242,206 @@ button:hover {
 
 .sidebarFooter {
   margin-top: auto;
+
   padding: 14px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
   color: #94a3b8;
-  border-top: 1px solid rgba(255,255,255,0.05);
   font-size: 13px;
-  border-radius: 8px;
 }
+/* ==========================================
+   MAP PANEL
+========================================== */
+
 .mapPanel {
-  background: #05070d;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 8px;
-  overflow: hidden;
-  min-width: 0;
+  display: grid;
+  grid-template-rows: 58px minmax(0, 1fr) 180px;
+  height: 100%;
   min-height: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .mapHeader {
-  height: 46px;
+  height: 58px;
   padding: 0 14px;
-  color: white;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
-.mapButton {
-  background: #0f172a;
-  color: white;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  padding: 7px 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  flex-shrink: 0;
 }
 
 .mapBody {
-  flex: 1;
+  position: relative;
   overflow: hidden;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .mapCanvas {
   position: relative;
-  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mapImage {
-  display: block;
   max-width: 100%;
-  max-height: calc(100vh - 140px);
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
-.rightPanel {
-  background: #05070d;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 8px;
-  padding: 10px;
-  overflow-y: auto;
-}
 
-.panelSection {
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 10px;
-  background: #030712;
-}
-
-.panelSection h3 {
-  margin-top: 0;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #f8fafc;
-}
-
-.alarmCard {
-  display: flex;
-  gap: 10px;
-  background: #111827;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 8px;
-  margin-bottom: 10px;
-}
-
-.alarmCard img {
-  width: 80px;
-  height: 55px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.alarmCard strong {
-  color: #f87171;
-  display: block;
-  font-size: 14px;
-}
-
-.alarmCard small {
-  color: #cbd5e1;
-  display: block;
-  font-size: 12px;
-}
-
-.alarmCard span {
-  color: #f87171;
-  font-size: 12px;
-}
-
-.eventRow {
-  padding: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  color: #cbd5e1;
-  font-size: 12px;
-}
-.bottomStatusBar {
-  height: 32px;
-  background: #05070d;
-  color: #94a3b8;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 0 14px;
-  font-size: 12px;
-}
-
-.bottomStatusBar span:first-child {
-  color: #22c55e;
-}
-.cameraDetailCard {
-  background: #05070d;
-  color: white;
-}
-
-.cameraDetailHeader {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.cameraDetailHeader h2 {
-  font-size: 18px;
-  margin: 0;
-  font-size: 14px;
-}
-
-.cameraDetailHeader span {
-  color: #22c55e;
-  font-size: 11px;
-  text-transform: uppercase;
-}
-
-.videoFrame {
-  background: black;
-  border: 1px solid #334155;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 12px;
-}
-
-.cameraInfoGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.cameraInfoGrid div {
-  background: #111827;
-  border: 1px solid ;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-.cameraInfoGrid small {
-  color: #94a3b8;
-  display: block;
-}
-
-.cameraInfoGrid strong {
-  color: white;
-  font-size: 12px;
-}
-
-.cameraDetailEmpty {
-  color: #94a3b8;
-  text-align: center;
-  padding: 30px;
-}
-.markerLabel {
-  position: absolute;
-  top: 38px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(2, 6, 23, 0.9);
-  color: white;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  padding: 3px 7px;
-  font-size: 11px;
-  white-space: nowrap;
-}
-button {
-  background: #0f172a;
-  color: white;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 8px 10px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-button:hover {
-  background: #1e293b;
-  border-color: #475569;
-}
-
-button:active {
-  transform: scale(0.97);
-}
-.kpiCard {
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
-}
-
-.kpiCard.online {
-  border-color: #22c55e;
-}
-
-.kpiCard.alarm {
-  border-color: #ef4444;
-}
-
-.kpiCard.warning {
-  border-color: #facc15;
-}
-
-.kpiCard.offline {
-  border-color: #64748b;
-}
-.mapOverlay {
+.mapDarkOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+
+  background: rgba(0, 0, 0, 0.28);
+
   pointer-events: none;
+  z-index: 2;
 }
+
+.markerLabel {
+  position: absolute;
+
+  top: 38px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: rgba(2, 6, 23, 0.92);
+
+  color: #fff;
+
+  border: 1px solid #334155;
+  border-radius: 6px;
+
+  padding: 3px 7px;
+
+  font-size: 11px;
+  white-space: nowrap;
+
+  z-index: 20;
+}
+
+.mapFloatingTools {
+  position: absolute;
+
+  right: 16px;
+  bottom: 16px;
+
+  display: grid;
+  gap: 8px;
+
+  z-index: 100;
+}
+
+.mapFloatingTools button {
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: rgba(7, 11, 19, 0.95);
+}
+
+/* ==========================================
+   QUICK VIEWS
+========================================== */
+
 .quickViews {
-  margin-top: 8px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  height: 160px;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  background: #050910;
 }
 
 .quickViewsHeader {
-  padding: 12px;
-  color: white;
+  flex: 0 0 36px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 12px;
+
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
+
+  color: #f8fafc;
 }
 
 .quickViewsGrid {
+  flex: 1;
+ align-items: stretch;
+  min-height: 10;
+
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
   gap: 10px;
+
   padding: 0 10px 10px 10px;
 }
 
 .quickCard {
-  background: #070b18;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 8px;
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
   overflow: hidden;
+
+  background: #101827;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
 }
 
 .quickCard img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  display: block;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  max-height: 100px;
+  object-fit: flex;
 }
 
 .quickCardFooter {
+  flex: 0 0 34px;
+
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
-  color: white;
-  font-size: 12px;
-}
 
-.quickStatus {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  gap: 8px;
+
+  padding: 0 8px;
+
+  background: #080d16;
+
+  color: #f8fafc;
+
+  font-size: 12px;
 }
 
 .quickStatus.online {
@@ -730,235 +459,113 @@ button:active {
 .quickStatus.offline {
   background: #64748b;
 }
-.mapPanel {
+/* ==========================================
+   RIGHT PANEL
+========================================== */
+
+.rightPanel {
   display: flex;
   flex-direction: column;
+
+  padding: 10px;
+
+  overflow-y: auto;
+
+  background: #050910;
+
+  color: #f8fafc;
 }
 
-.mapBody {
-  flex: 1;
-}
-
-/* AJUSTE FINAL ESTILO PROTOTIPO */
-
-body {
-  background: #03060b !important;
-  font-family: "Inter", Arial, sans-serif !important;
-}
-
-/* Fondos de paneles */
-.sidePanel,
-.mapPanel,
-.rightPanel {
-  background: #050910 !important;
-  border: 1px solid rgba(255,255,255,0.06) !important;
-}
-
-/* Headers */
-.panelHeader,
-.mapHeader {
-  background: #070b13 !important;
-  color: #f8fafc !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-}
-
-/* Panel izquierdo */
-.cameraRow {
-   background: #0a111c !important;
-  border-left: 2px solid transparent;
-  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-  height: 54px !important;
-}
-
-.cameraRow.selected {
-  background: #101d3d !important;
-}
-
-.cameraRow.alarmRow {
-  background: #281010 !important;
-}
-
-.cameraRow div {
-  font-size: 13px !important;
-}
-
-.cameraRow small {
-  font-size: 11px !important;
-}
-
-/* Vistas rápidas */
-.quickViews {
-  background: #0a111c;
-  margin: 8px;
-  border-radius: 10px;
-  padding-bottom: 10px;
-  border-top: 1px solid rgba(255,255,255,0.06) !important;
-}
-
-.quickViewsHeader {
-  background: #050910 !important;
-  color: #f8fafc !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-}
-
-.quickCard {
-  background: #101827 !important;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.quickCardFooter {
-  background: #080d16 !important;
-  color: #f8fafc !important;
-  font-size: 12px !important;
-}
-
-/* Panel derecho */
 .panelSection {
-  background: #070b13 !important;
-  border: 1px solid rgba(255,255,255,0.06) !important;
+  margin-bottom: 10px;
+
+  padding: 12px;
+
+  background: #070b13;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
 }
 
 .panelSection h3 {
-  color: #f8fafc !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
+  margin: 0 0 10px 0;
+
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  color: #f8fafc;
 }
 
+/* ==========================================
+   ALARMAS
+========================================== */
+
 .alarmCard {
-  background: #0b111c !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
+  display: flex;
+  gap: 10px;
+
+  margin-bottom: 10px;
+  padding: 8px;
+
+  background: #0b111c;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.alarmCard img {
+  width: 80px;
+  height: 55px;
+
+  object-fit: cover;
+
+  border-radius: 6px;
 }
 
 .alarmCard strong {
-  color: #f87171 !important;
-  font-size: 14px !important;
+  display: block;
+
+  color: #f87171;
+
+  font-size: 14px;
 }
 
 .alarmCard small {
-  color: #cbd5e1 !important;
-  font-size: 12px !important;
-}
-
-.alarmCard span {
-  color: #f87171 !important;
-  font-size: 11px !important;
-}
-
-/* Eventos recientes */
-.eventRow {
-  background: #080d16 !important;
-  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-  color: #cbd5e1 !important;
-  font-size: 12px !important;
-}
-
-/* KPI superior */
-.kpiCard span {
-  color: #f1f5f9 !important;
-  opacity: 1 !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-}
-
-.kpiCard small {
-  color: #cbd5e1 !important;
-}
-
-.kpiCard strong {
-  color: inherit !important;
-}
-
-/* Separadores superiores */
-.topDivider {
-  width: 1px;
-  height: 42px;
-  background: rgba(255,255,255,0.08);
-}
-.cameraDetailCard h2 {
-  font-size: 14px !important;
-  margin: 0 0 4px 0 !important;
-  color: #f8fafc !important;
-}
-
-.cameraStatusText {
-  color: #22c55e;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.videoFrame img {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
   display: block;
-}
 
-.cameraSelectedFooter {
-  margin-top: 10px;
-  background: #07111a;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.selectedCameraName {
-  color: #f8fafc;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-bottom: 10px;
-}
-
-.greenDot {
-  width: 10px;
-  height: 10px;
-  background: #22c55e;
-  border-radius: 50%;
-}
-
-.streamControls {
-  display: grid;
-  grid-template-columns: 1fr 36px 36px;
-  gap: 8px;
-}
-
-.streamControls select {
-  background: #050910;
   color: #cbd5e1;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
-  padding: 8px;
+
   font-size: 12px;
 }
 
-.streamControls button {
-  padding: 0 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.alarmCard span {
+  color: #f87171;
+
+  font-size: 11px;
 }
+
+/* ==========================================
+   EVENTOS
+========================================== */
+
 .eventCard {
   display: grid;
   grid-template-columns: 24px 1fr auto;
+
   gap: 10px;
+
   align-items: center;
-  background: #07111a;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+
   padding: 10px 8px;
+
+  background: #080d16;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .eventIcon {
   color: #ef4444;
-  font-size: 15px;
-}
-
-.eventTime {
-  color: #cbd5e1;
-  font-size: 12px;
 }
 
 .eventText {
@@ -971,38 +578,144 @@ body {
   font-size: 12px;
 }
 
-.mapCanvas {
-  position: relative;
+.eventTime {
+  color: #cbd5e1;
+  font-size: 12px;
 }
 
-.mapDarkOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.28);
-  pointer-events: none;
-  z-index: 2;
-}
+/* ==========================================
+   CAMERA DETAIL
+========================================== */
 
-.mapCanvas .markerLabel,
-.mapCanvas > div[style*="absolute"] {
-  z-index: 10;
-}
-
-.mapFloatingTools {
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
-  display: grid;
-  gap: 8px;
-  z-index: 50;
-}
-
-.mapFloatingTools button {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background: rgba(7, 11, 19, 0.95) !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
+.cameraDetailCard {
   color: white;
-  font-size: 20px;
+}
+
+.cameraDetailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 12px;
+}
+
+.cameraDetailHeader h2 {
+  margin: 0;
+
+  font-size: 15px;
+
+  color: #f8fafc;
+}
+
+.cameraStatusText {
+  color: #22c55e;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.videoFrame {
+  overflow: hidden;
+
+  margin-bottom: 12px;
+
+  background: black;
+
+  border: 1px solid #334155;
+  border-radius: 10px;
+}
+
+.videoFrame img {
+  display: block;
+
+  width: 100%;
+  height: 180px;
+
+  object-fit: cover;
+}
+
+.cameraInfoGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+}
+
+.cameraInfoGrid div {
+  padding: 10px;
+
+  background: #111827;
+
+  border: 1px solid #1a2233;
+  border-radius: 8px;
+}
+
+.cameraInfoGrid small {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+.cameraInfoGrid strong {
+  color: white;
+
+  font-size: 12px;
+}
+
+.cameraDetailEmpty {
+  padding: 40px 20px;
+
+  text-align: center;
+
+  color: #94a3b8;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.bottomStatusBar {
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 0 14px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  background: #070b13;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+.bottomStatusBar span:first-child {
+  color: #22c55e;
+}
+
+/* ==========================================
+   ANIMACIONES
+========================================== */
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

@@ -1,34 +1,48 @@
 import { useEffect, useState } from "react";
 
-import { loadCameras }
-from "../repositories/CameraRepository";
-
-import type { WaveCamera }
-from "../services/WaveApiService";
+export interface WaveCamera {
+  id: string;
+  name: string;
+  status: "online" | "offline" | "alarm" | "warning";
+}
 
 export default function useCameras() {
+  const [cameras, setCameras] = useState<WaveCamera[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const [cameras, setCameras] =
-    useState<WaveCamera[]>([]);
+  async function loadCameras() {
+    try {
+      const response = await fetch("http://localhost:3001/api/cameras");
 
+      if (!response.ok) {
+        throw new Error("Error al obtener cámaras");
+      }
 
- useEffect(() => {
-
-  async function init() {
-
-    const data =
-      await loadCameras();
-
-    setCameras(data);
-
+      const data = await response.json();
+      setCameras(data);
+      setError(null);
+    } catch (err) {
+      console.error(err);
+      setError("No se pudo conectar con el backend");
+    } finally {
+      setLoading(false);
+    }
   }
 
-  init();
+  useEffect(() => {
+    loadCameras();
 
-}, []);
+    const interval = setInterval(() => {
+      loadCameras();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return {
-    cameras
+    cameras,
+    loading,
+    error
   };
-
 }

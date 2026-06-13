@@ -2,7 +2,9 @@ import {
   Menu,
   MapPin,
   Sun,
-  UserCircle
+  UserCircle,
+  Settings,
+  Edit3
 } from "lucide-react";
 
 interface Props {
@@ -10,13 +12,19 @@ interface Props {
   alarm: number;
   warning: number;
   offline: number;
+  editMode: boolean;
+  onToggleEdit: () => void;
+  onOpenSettings: () => void;
 }
 
 export default function TopBar({
   online,
   alarm,
   warning,
-  offline
+  offline,
+  editMode,
+  onToggleEdit,
+  onOpenSettings
 }: Props) {
   return (
     <div
@@ -25,7 +33,7 @@ export default function TopBar({
         background: "#05070d",
         color: "white",
         display: "grid",
-        gridTemplateColumns: "360px 1fr 300px",
+        gridTemplateColumns: "320px 1fr 360px",
         alignItems: "center",
         borderBottom: "1px solid #1e293b",
         padding: "0 16px"
@@ -41,10 +49,7 @@ export default function TopBar({
         </div>
 
         <div>
-          <div style={{ fontSize: 20, fontWeight: 700 }}>
-            PLANTA PISCO
-          </div>
-
+          <div style={{ fontSize: 20, fontWeight: 700 }}>PLANTA PISCO</div>
           <div style={{ color: "#94a3b8", fontSize: 13 }}>
             Centro de Monitoreo VMS
           </div>
@@ -52,36 +57,22 @@ export default function TopBar({
       </div>
 
       <div className="kpiRow">
-        <div className="kpiCard online">
-          <span>Online</span>
-          <strong>{online}</strong>
-          <small>cámaras</small>
-        </div>
-
-        <div className="kpiCard alarm">
-          <span>Alarmas</span>
-          <strong>{alarm}</strong>
-          <small>activas</small>
-        </div>
-
-        <div className="kpiCard warning">
-          <span>Advertencias</span>
-          <strong>{warning}</strong>
-          <small>cámara</small>
-        </div>
-
-        <div className="kpiCard offline">
-          <span>Offline</span>
-          <strong>{offline}</strong>
-          <small>cámaras</small>
-        </div>
+        <div className="kpiCard online"><span>Online</span><strong>{online}</strong><small>cámaras</small></div>
+        <div className="kpiCard alarm"><span>Alarmas</span><strong>{alarm}</strong><small>activas</small></div>
+        <div className="kpiCard warning"><span>Advertencias</span><strong>{warning}</strong><small>cámara</small></div>
+        <div className="kpiCard offline"><span>Offline</span><strong>{offline}</strong><small>cámaras</small></div>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "flex-end", gap: 20 }}>
-        <div style={{ textAlign: "right" }}>
-          <div>10:24:35</div>
-          <small style={{ color: "#94a3b8" }}>23/05/2026</small>
-        </div>
+      <div style={{ display: "flex", justifyContent: "flex-end", gap: 14, alignItems: "center" }}>
+        <button className="mapButton" onClick={onToggleEdit}>
+          <Edit3 size={15} />
+          {editMode ? "Salir edición" : "Editar"}
+        </button>
+
+        <button className="mapButton" onClick={onOpenSettings}>
+          <Settings size={15} />
+          Configuración
+        </button>
 
         <Sun size={22} />
 
