@@ -1,6 +1,9 @@
 import type { Camera } from "../../types/Camera";
 import CameraDetail from "../CameraDetail";
 
+import panelStyles from "../../styles/Panel.module.css";
+import styles from "./RightPanel.module.css";
+
 interface Props {
   alarms: Camera[];
   selectedCamera?: Camera;
@@ -11,12 +14,12 @@ export default function RightPanel({
   selectedCamera
 }: Props) {
   return (
-    <div className="rightPanel">
-      <section className="panelSection">
+    <div className={`${panelStyles.panel} ${styles.rightPanel}`}>
+      <section className={styles.panelSection}>
         <h3>ALARMAS ACTIVAS ({alarms.length})</h3>
 
         {alarms.map(alarm => (
-          <div className="alarmCard" key={alarm.id}>
+          <div className={styles.alarmCard} key={alarm.id}>
             <img src={alarm.preview} />
 
             <div>
@@ -28,26 +31,26 @@ export default function RightPanel({
         ))}
       </section>
 
-      <section className="panelSection">
+      <section className={styles.panelSection}>
         <h3>CÁMARA SELECCIONADA</h3>
         <CameraDetail camera={selectedCamera} />
       </section>
 
-      <section className="panelSection">
+      <section className={styles.panelSection}>
         <h3>EVENTOS RECIENTES</h3>
 
         {alarms.map(alarm => (
-          <div className="eventCard" key={alarm.id}>
-            <div className="eventIcon">⦿</div>
+          <div className={styles.eventCard} key={alarm.id}>
+            <div className={styles.eventIcon}>⦿</div>
 
             <div>
-              <div className="eventTime">10:23:41</div>
-              <div className="eventText">
+              <div className={styles.eventTime}>10:23:41</div>
+              <div className={styles.eventText}>
                 Movimiento detectado
               </div>
             </div>
 
-            <div className="eventCamera">
+            <div className={styles.eventCamera}>
               {alarm.name}
             </div>
           </div>

@@ -1,0 +1,124 @@
+.topBar {
+  height: 72px;
+  background: #05070d;
+  color: white;
+  display: grid;
+  grid-template-columns: 320px 1fr 360px;
+  align-items: center;
+  border-bottom: 1px solid #1e293b;
+  padding: 0 16px;
+}
+
+.brandGroup,
+.actions,
+.operator {
+  display: flex;
+  align-items: center;
+}
+
+.brandGroup {
+  gap: 16px;
+}
+
+.actions {
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.operator {
+  gap: 8px;
+}
+
+.iconButton,
+.mapButton {
+  background: var(--ctrl);
+  border: 1px solid var(--bdc);
+  color: white;
+}
+
+.mapButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.logoCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #111827;
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #f59e0b;
+}
+
+.brandTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.brandSubtitle,
+.operatorName {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.kpiRow {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.kpiCard {
+  width: 165px;
+  height: 56px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  border: var(--line);
+}
+
+.kpiCard span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.kpiCard strong {
+  font-size: 28px;
+  line-height: 1;
+  text-align: right;
+}
+
+.kpiCard small {
+  grid-column: 2;
+  grid-row: 2;
+  color: #cbd5e1;
+  font-size: 12px;
+  text-align: right;
+}
+
+.online {
+  background: #042713;
+  color: #33c766;
+}
+
+.alarm {
+  background: #340606;
+  color: #f06464;
+}
+
+.warning {
+  background: #3f2a04;
+  color: var(--warn);
+}
+
+.offline {
+  background: #121926;
+  color: #d1d5db;
+}

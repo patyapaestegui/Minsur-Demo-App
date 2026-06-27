@@ -1,6 +1,8 @@
 import { Camera, Maximize2 } from "lucide-react";
 import type { Camera as CameraType } from "../types/Camera";
 
+import styles from "./CameraDetail.module.css";
+
 interface Props {
   camera?: CameraType;
 }
@@ -8,31 +10,26 @@ interface Props {
 export default function CameraDetail({ camera }: Props) {
   if (!camera) {
     return (
-      <div className="cameraDetailEmpty">
+      <div className={styles.cameraDetailEmpty}>
         Seleccione una cámara
       </div>
     );
   }
 
   return (
-    <div className="cameraDetailCard">
+    <div className={styles.cameraDetailCard}>
       <h2>{camera.name}</h2>
-      <span className="cameraStatusText">
+      <span className={styles.cameraStatusText}>
         {camera.status.toUpperCase()}
       </span>
 
-      <div className="videoFrame">
+      <div className={styles.videoFrame}>
         <video
+          className={styles.video}
           autoPlay
           muted
           loop
           controls
-          style={{
-            width: "100%",
-            height: "170px",
-            objectFit: "cover",
-            display: "block"
-          }}
         >
           <source
             src="https://www.w3schools.com/html/mov_bbb.mp4"
@@ -41,13 +38,13 @@ export default function CameraDetail({ camera }: Props) {
         </video>
       </div>
 
-      <div className="cameraSelectedFooter">
-        <div className="selectedCameraName">
-          <span className="greenDot" />
+      <div className={styles.cameraSelectedFooter}>
+        <div className={styles.selectedCameraName}>
+          <span className={styles.greenDot} />
           {camera.name}
         </div>
 
-        <div className="streamControls">
+        <div className={styles.streamControls}>
           <select>
             <option>Stream principal (WebRTC)</option>
             <option>Stream secundario</option>
