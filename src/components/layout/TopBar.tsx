@@ -7,6 +7,8 @@ import {
   Edit3
 } from "lucide-react";
 
+import styles from "./TopBar.module.css";
+
 interface Props {
   online: number;
   alarm: number;
@@ -27,60 +29,49 @@ export default function TopBar({
   onOpenSettings
 }: Props) {
   return (
-    <div
-      style={{
-        height: 72,
-        background: "#05070d",
-        color: "white",
-        display: "grid",
-        gridTemplateColumns: "320px 1fr 360px",
-        alignItems: "center",
-        borderBottom: "1px solid #1e293b",
-        padding: "0 16px"
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        <button className="iconButton">
+    <div className={styles.topBar}>
+      <div className={styles.brandGroup}>
+        <button className={styles.iconButton}>
           <Menu size={22} />
         </button>
 
-        <div className="logoCircle">
+        <div className={styles.logoCircle}>
           <MapPin size={26} />
         </div>
 
         <div>
-          <div style={{ fontSize: 20, fontWeight: 700 }}>PLANTA PISCO</div>
-          <div style={{ color: "#94a3b8", fontSize: 13 }}>
+          <div className={styles.brandTitle}>PLANTA PISCO</div>
+          <div className={styles.brandSubtitle}>
             Centro de Monitoreo VMS
           </div>
         </div>
       </div>
 
-      <div className="kpiRow">
-        <div className="kpiCard online"><span>Online</span><strong>{online}</strong><small>cámaras</small></div>
-        <div className="kpiCard alarm"><span>Alarmas</span><strong>{alarm}</strong><small>activas</small></div>
-        <div className="kpiCard warning"><span>Advertencias</span><strong>{warning}</strong><small>cámara</small></div>
-        <div className="kpiCard offline"><span>Offline</span><strong>{offline}</strong><small>cámaras</small></div>
+      <div className={styles.kpiRow}>
+        <div className={`${styles.kpiCard} ${styles.online}`}><span>Online</span><strong>{online}</strong><small>cámaras</small></div>
+        <div className={`${styles.kpiCard} ${styles.alarm}`}><span>Alarmas</span><strong>{alarm}</strong><small>activas</small></div>
+        <div className={`${styles.kpiCard} ${styles.warning}`}><span>Advertencias</span><strong>{warning}</strong><small>cámara</small></div>
+        <div className={`${styles.kpiCard} ${styles.offline}`}><span>Offline</span><strong>{offline}</strong><small>cámaras</small></div>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "flex-end", gap: 14, alignItems: "center" }}>
-        <button className="mapButton" onClick={onToggleEdit}>
+      <div className={styles.actions}>
+        <button className={styles.mapButton} onClick={onToggleEdit}>
           <Edit3 size={15} />
           {editMode ? "Salir edición" : "Editar"}
         </button>
 
-        <button className="mapButton" onClick={onOpenSettings}>
+        <button className={styles.mapButton} onClick={onOpenSettings}>
           <Settings size={15} />
           Configuración
         </button>
 
         <Sun size={22} />
 
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <div className={styles.operator}>
           <UserCircle />
           <div>
             <div>Operador</div>
-            <small style={{ color: "#94a3b8" }}>operador1</small>
+            <small className={styles.operatorName}>operador1</small>
           </div>
         </div>
       </div>

@@ -1,0 +1,86 @@
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+  color: var(--fg);
+}
+
+.panelSection {
+  margin-bottom: 10px;
+  padding: 12px;
+  background: var(--sr);
+  border: var(--line);
+  border-radius: 8px;
+}
+
+.panelSection h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.alarmCard {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #0b111c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.alarmCard img {
+  width: 80px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.alarmCard strong {
+  display: block;
+  color: #f87171;
+  font-size: 14px;
+}
+
+.alarmCard small {
+  display: block;
+  color: #cbd5e1;
+  font-size: 12px;
+}
+
+.alarmCard span {
+  color: #f87171;
+  font-size: 11px;
+}
+
+.eventCard {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 8px;
+  background: #080d16;
+  border-bottom: var(--line);
+}
+
+.eventIcon {
+  color: #ef4444;
+}
+
+.eventText {
+  color: var(--fg);
+  font-size: 12px;
+}
+
+.eventCamera {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.eventTime {
+  color: #cbd5e1;
+  font-size: 12px;
+}

@@ -5,6 +5,9 @@ import CameraMarker from "../CameraMarker";
 import MapViewer from "../MapViewer";
 import QuickViews from "./QuickViews";
 
+import panelStyles from "../../styles/Panel.module.css";
+import styles from "./MapPanel.module.css";
+
 interface MapItem {
   id: number;
   name: string;
@@ -41,6 +44,7 @@ export default function MapPanel({
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const movedRef = useRef(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const handleMapClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (movedRef.current) {
@@ -108,7 +112,7 @@ export default function MapPanel({
   };
 
   const toggleFullscreen = () => {
-    const element = document.querySelector(".mapPanel") as HTMLElement | null;
+    const element = panelRef.current;
     if (!element) return;
 
     if (!document.fullscreenElement) {
@@ -119,28 +123,22 @@ export default function MapPanel({
   };
 
   return (
-    <div className="mapPanel">
-      <div className="mapHeader">
+    <div ref={panelRef} className={`${panelStyles.panel} ${styles.mapPanel}`}>
+      <div className={styles.mapHeader}>
         <div>
-          <div style={{ fontSize: 18, fontWeight: 700 }}>
+          <div className={styles.mapTitle}>
             MAPA INTERACTIVO
           </div>
-          <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 2 }}>
+          <div className={styles.mapSubtitle}>
             {mapName}
           </div>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div className={styles.mapControls}>
           <select
+            className={styles.mapSelect}
             value={selectedMapId}
             onChange={e => onChangeMap(Number(e.target.value))}
-            style={{
-              background: "#020617",
-              color: "white",
-              border: "1px solid #334155",
-              borderRadius: 8,
-              padding: "6px 10px"
-            }}
           >
             {maps.map(map => (
               <option key={map.id} value={map.id}>
@@ -151,16 +149,20 @@ export default function MapPanel({
 
           <button onClick={onCreateMap}>+ Nuevo mapa</button>
 
-          <span style={{ color: editMode ? "#f59e0b" : "#22c55e", fontSize: 13 }}>
+          <span
+            className={styles.statusLabel}
+            style={{ color: editMode ? "#f59e0b" : "#22c55e" }}
+          >
             ● {editMode ? "Modo edición" : "Sistema operativo"}
           </span>
         </div>
       </div>
 
-      <div className="mapBody">
+      <div className={styles.mapBody}>
         <MapViewer>
           <div
-            className="mapCanvas"
+            className={styles.mapCanvas}
+            data-map-canvas
             onClick={handleMapClick}
             onWheel={handleWheel}
             onMouseDown={handleMouseDown}
@@ -172,8 +174,8 @@ export default function MapPanel({
               margin: "auto"
             }}
           >
-            <img src={plano} alt="Plano" className="mapImage" />
-            <div className="mapDarkOverlay" />
+            <img src={plano} alt="Plano" className={styles.mapImage} />
+            <div className={styles.mapDarkOverlay} />
 
             {cameras.map(camera => (
               <CameraMarker
@@ -187,7 +189,7 @@ export default function MapPanel({
           </div>
         </MapViewer>
 
-        <div className="mapFloatingTools">
+        <div className={styles.mapFloatingTools}>
           <button onClick={e => { e.stopPropagation(); setZoom(z => Math.min(z + 0.1, 3)); }}>+</button>
           <button onClick={e => { e.stopPropagation(); setZoom(z => Math.max(z - 0.1, 0.5)); }}>−</button>
           <button onClick={e => { e.stopPropagation(); toggleFullscreen(); }}>⛶</button>

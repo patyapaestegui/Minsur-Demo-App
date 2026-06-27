@@ -1,0 +1,106 @@
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}
+
+.panelHeader {
+  height: 48px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--sr);
+  color: var(--fg);
+  font-weight: 700;
+  border-bottom: var(--line);
+}
+
+.searchRow {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+}
+
+.searchBox {
+  flex: 1;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  background: #030712;
+  color: var(--muted);
+  border: var(--line);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.iconButtonSmall {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--ctrl);
+  border: 1px solid var(--bdc);
+  color: white;
+}
+
+.cameraRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 12px;
+  background: #0a111c;
+  border-bottom: var(--line);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cameraRow:hover {
+  background: #101827;
+}
+
+.selected {
+  background: #101d3d;
+}
+
+.alarmRow {
+  background: #281010;
+  color: #fca5a5;
+}
+
+.cameraRow small {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.cameraNumber {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #030712;
+  border: var(--line);
+  font-size: 11px;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cameraInfo {
+  flex: 1;
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  padding: 14px;
+  border-top: var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}

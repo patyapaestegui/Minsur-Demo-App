@@ -2,6 +2,8 @@ import { FaVideo } from "react-icons/fa";
 import type { Camera } from "../types/Camera";
 import { useState } from "react";
 
+import styles from "./CameraMarker.module.css";
+
 interface Props {
   camera: Camera;
   onClick: (camera: Camera) => void;
@@ -30,7 +32,7 @@ export default function CameraMarker({ camera, onClick, editMode, onMove }: Prop
     event.preventDefault();
     event.stopPropagation();
 
-    const mapCanvas = event.currentTarget.closest(".mapCanvas") as HTMLElement | null;
+    const mapCanvas = event.currentTarget.closest("[data-map-canvas]") as HTMLElement | null;
     if (!mapCanvas) return;
 
     let finalX = camera.x;
@@ -65,6 +67,7 @@ export default function CameraMarker({ camera, onClick, editMode, onMove }: Prop
 
   return (
     <div
+      className={styles.markerRoot}
       onMouseDown={handleMouseDown}
       onClick={(e) => {
         e.stopPropagation();
@@ -73,41 +76,28 @@ export default function CameraMarker({ camera, onClick, editMode, onMove }: Prop
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        position: "absolute",
         left: `${position.x}%`,
         top: `${position.y}%`,
-        transform: "translate(-50%, -50%)",
-        cursor: editMode ? "grab" : "pointer",
-        zIndex: 20
+        cursor: editMode ? "grab" : "pointer"
       }}
     >
       {hover && !editMode && (
-        <div style={{
-          position: "absolute",
-          left: "45px",
-          top: "-20px",
-          background: "#111827",
-          padding: "8px",
-          borderRadius: "8px",
-          zIndex: 1000,
-          border: "1px solid #334155"
-        }}>
-          <img src={camera.preview} width={180} style={{ borderRadius: "6px", display: "block" }} />
-          <div style={{ color: "white", fontSize: "12px", marginTop: "6px" }}>
+        <div className={styles.hoverPreview}>
+          <img
+            className={styles.previewImage}
+            src={camera.preview}
+            width={180}
+          />
+          <div className={styles.previewName}>
             {camera.name}
           </div>
         </div>
       )}
 
-      <div style={{
-        width: "34px",
-        height: "34px",
-        borderRadius: "50%",
+      <div
+        className={`${styles.markerIcon} ${camera.status === "alarm" ? styles.alarm : ""}`}
+        style={{
         backgroundColor: getColor(),
-        animation: camera.status === "alarm" ? "pulse 1s infinite" : undefined,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         border: editMode ? "2px dashed white" : "2px solid white",
         boxShadow:
           camera.status === "alarm"
@@ -115,11 +105,12 @@ export default function CameraMarker({ camera, onClick, editMode, onMove }: Prop
             : camera.status === "online"
             ? "0 0 14px #22c55e"
             : "0 0 10px #64748b"
-      }}>
+        }}
+      >
         <FaVideo color="white" />
       </div>
 
-      <div className="markerLabel">{camera.name}</div>
+      <div className={styles.markerLabel}>{camera.name}</div>
     </div>
   );
 }

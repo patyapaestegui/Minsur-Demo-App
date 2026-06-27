@@ -1,6 +1,9 @@
 import { Search, SlidersHorizontal, Star } from "lucide-react";
 import type { Camera } from "../../types/Camera";
 
+import panelStyles from "../../styles/Panel.module.css";
+import styles from "./CameraSidebar.module.css";
+
 interface Props {
   cameras: Camera[];
   selectedCamera?: Camera;
@@ -27,19 +30,19 @@ export default function CameraSidebar({
   };
 
   return (
-    <div className="sidePanel">
-      <div className="panelHeader">
+    <div className={`${panelStyles.panel} ${styles.sidePanel}`}>
+      <div className={styles.panelHeader}>
         <span>CÁMARAS</span>
         <span>×</span>
       </div>
 
-      <div className="searchRow">
-        <div className="searchBox">
+      <div className={styles.searchRow}>
+        <div className={styles.searchBox}>
           <Search size={16} />
           <span>Buscar cámara...</span>
         </div>
 
-        <button className="iconButtonSmall">
+        <button className={styles.iconButtonSmall}>
           <SlidersHorizontal size={16} />
         </button>
       </div>
@@ -51,20 +54,20 @@ export default function CameraSidebar({
             onClick={() => onSelect(camera)}
             className={
               selectedCamera?.id === camera.id
-                ? "cameraRow selected"
+                ? `${styles.cameraRow} ${styles.selected}`
                 : camera.status === "alarm"
-                  ? "cameraRow alarmRow"
-                  : "cameraRow"
+                  ? `${styles.cameraRow} ${styles.alarmRow}`
+                  : styles.cameraRow
             }
           >
-            <div className="cameraNumber">{index + 1}</div>
+            <div className={styles.cameraNumber}>{index + 1}</div>
 
             <div
-              className="statusDot"
+              className={styles.statusDot}
               style={{ background: getStatusColor(camera.status) }}
             />
 
-            <div style={{ flex: 1 }}>
+            <div className={styles.cameraInfo}>
               <div>{camera.name}</div>
               <small style={{ color: getStatusColor(camera.status) }}>
                 {getStatusText(camera.status)}
@@ -76,7 +79,7 @@ export default function CameraSidebar({
         ))}
       </div>
 
-      <div className="sidebarFooter">
+      <div className={styles.sidebarFooter}>
         Total cámaras <strong>{cameras.length}</strong>
       </div>
     </div>

@@ -1,0 +1,80 @@
+.quickViews {
+  height: 160px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-top: var(--line);
+  background: var(--s);
+}
+
+.quickViewsHeader {
+  flex: 0 0 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.quickViewsGrid {
+  flex: 1;
+  align-items: stretch;
+  min-height: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0 10px 10px;
+}
+
+.quickCard {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #101827;
+  border: var(--line);
+  border-radius: 8px;
+}
+
+.quickCard img {
+  width: 100%;
+  height: calc(100% - 34px);
+  min-height: 0;
+  object-fit: cover;
+}
+
+.quickCardFooter {
+  flex: 0 0 34px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  background: #080d16;
+  color: var(--fg);
+  font-size: 12px;
+}
+
+.quickStatus {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.online {
+  background: var(--ok);
+}
+
+.alarm {
+  background: #ef4444;
+}
+
+.warning {
+  background: var(--warn);
+}
+
+.offline {
+  background: #64748b;
+}
